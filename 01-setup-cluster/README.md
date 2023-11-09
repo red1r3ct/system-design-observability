@@ -13,11 +13,12 @@
     ```bash
     export KUBECONFIG=/etc/kubernetes/admin.conf
     ```
-5. На других нодах вызываем команду для подключения к нодам
+5. На других нодах вызываем команду для подключения к нодам (можно подсмотреть в выводе команды kubeadm init)
     ```bash
     kubeadm join 192.168.0.8:6443 --token <token> \
         --discovery-token-ca-cert-hash <hash>
     ```
+    Опционально копируем /etc/kubernetes/admin.conf с node1 на другие машины и повторяем команду `export KUBECONFIG=/etc/kubernetes/admin.conf`
 6. Проверим что ноды подключились
     ```bash
     kubectl get nodes

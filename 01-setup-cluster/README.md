@@ -39,3 +39,8 @@
     # copy ngrok.conf
     ngrok start --config ngrok.conf --all
     ```
+10. Клонируем репу в кластер
+
+    ```bash
+    docker run -it -v $(pwd):/app -w /app alpine/git clone https://github.com/red1r3ct/system-design-observability.git
+    ```

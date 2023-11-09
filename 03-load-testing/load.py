@@ -25,7 +25,7 @@ stats = {
     "fails": 0,
 }
 
-driver.get("https://94f2-20-123-184-30.ngrok-free.app/productpage?u=test#")
+driver.get("https://0b0f-23-97-230-27.ngrok-free.app/productpage?u=test#")
 for i in range(1000000):
     driver.refresh()
     try:
@@ -35,13 +35,17 @@ for i in range(1000000):
     except TimeoutException:
         print("Loading took too much time!")
         stats["fails"] += 1
-
+    found = False
     for version, locator in locators.items():
         try:
             el = driver.find_element(By.CSS_SELECTOR, locator)
             stats[version] += 1
+            found = True
+            break
         except NoSuchElementException:
             continue
+    if not found:
+        print("no ratings found")
     if i % 10 == 0:
         print(f"stats {stats}")
 driver.quit()
